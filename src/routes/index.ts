@@ -15,7 +15,6 @@ routes.post('/', upload.single('image'), async (request: Request, response: Resp
     const { file } = request;
     const uploadImagesService = new UploadImagesService();
     await uploadImagesService.execute(file);
-    
     return response.json({ success: true });
   } catch (error) {
     console.error(error);
@@ -42,7 +41,8 @@ routes.get('/:filename', async (request: Request, response: Response) => {
     const { filename } = request.params;
     const getImagesService = new GetImagesService();
     const signedUrl = await getImagesService.execute(filename);
-    return response.status(200).json({ signedUrl });
+    console.log('url=>',signedUrl)
+    return response.status(200).json( {signedUrl} );
   } catch (error) {
     console.error(error);
     response.status(500).send('Erro ao obter a URL assinada.');

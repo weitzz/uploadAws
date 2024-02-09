@@ -54,11 +54,10 @@ class StorageS3 {
     });
 
     const signedUrl = await getSignedUrl(this.client, command, { expiresIn: expiresT });
-    console.log("URL assinada para o arquivo:", signedUrl);
+    // console.log("URL assinada para o arquivo:", signedUrl);
+    
     return signedUrl;
   }
-
-  
 }
 
 export default StorageS3;
